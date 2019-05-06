@@ -524,6 +524,26 @@ class MultiplyByTwo(BaseTransformer):
         df[self.output_item] = df[self.input_item] * 2
         return df
 
+class MultiplyByThree(BaseTransformer):
+    '''
+    Multiply input column by 3 to produce output column
+    '''
+    auto_register_args = {
+        'input_item' : 'x_1'
+        }
+    
+    def __init__(self, input_item, output_item = 'output_item'):
+        
+        self.input_item = input_item
+        self.output_item = output_item
+        
+        super().__init__()
+
+    def execute(self, df):
+        df = df.copy()
+        df[self.output_item] = df[self.input_item] * 3
+        return df    
+    
 class MultiplyByConstant(BaseTransformer):
     '''
     Multiply input column by a constant to produce output column
