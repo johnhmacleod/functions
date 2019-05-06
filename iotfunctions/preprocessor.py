@@ -538,6 +538,20 @@ class PredictPower(BaseTransformer):
 
     def execute(self, df):
         df = df.copy()
+        wml_credentials={
+            "url": "https://us-south.ml.cloud.ibm.com",
+            "username": "07ccaa7c-a1a3-4323-90d2-d6ea672d2cab",
+            "password": "3e6d9a9a-5a59-4f34-93a2-0cfc9e31eb1e"
+        }
+
+        headers = urllib3.util.make_headers(basic_auth='{username}:{password}'.format(username=wml_credentials['username'], password=wml_credentials['password']))
+        url = '{}/v3/identity/token'.format(wml_credentials['url'])
+        response = requests.get(url, headers=headers)
+        mltoken = json.loads(response.text).get('token')
+
+        
+        
+        
         df[self.output_item] = df[self.input_item_1] * df[self.input_item_2]
         return df        
    
