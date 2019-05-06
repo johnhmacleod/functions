@@ -506,7 +506,7 @@ class MultiplyArrayByConstant(BaseTransformer):
 
 class MultiplyByTwo(BaseTransformer):
     '''
-    Multiply input column by 2 to produce output column
+    Multiply input column by two to produce output column
     '''
     auto_register_args = {
         'input_item' : 'x_1'
