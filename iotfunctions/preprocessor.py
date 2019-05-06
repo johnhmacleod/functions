@@ -514,7 +514,7 @@ class PredictPower(BaseTransformer):
     def __init__(self, input_item_1, input_item_2, input_item_3, output_item = 'output_item'):
         self.input_item_1 = input_item_1
         self.input_item_2 = input_item_2
-        self.input_item_2 = input_item_3
+        self.input_item_3 = input_item_3
         self.output_item = output_item
         
         super().__init__()
