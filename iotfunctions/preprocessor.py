@@ -504,16 +504,34 @@ class MultiplyArrayByConstant(BaseTransformer):
             df[self.output_items[i]] = df[input_item] * self.constant
         return df
 
-    
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class PredictPower(BaseTransformer):
     '''
-    Multiply two input items together to produce output column
+    Predict freezer power usage from ambient temperature, humidity & hour of day
     '''
     
-    def __init__(self, input_item_1, input_item_2, output_item = 'output_item'):
+    def __init__(self, input_item_1, input_item_2, input_item_3, output_item = 'output_item'):
         self.input_item_1 = input_item_1
         self.input_item_2 = input_item_2
+        self.input_item_3 = input_item_3
         self.output_item = output_item
         
         super().__init__()
