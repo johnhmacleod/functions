@@ -528,11 +528,11 @@ class PredictPower(BaseTransformer):
     Predict freezer power usage from ambient temperature, humidity & hour of day
     '''
     
-    def __init__(self, input_item_1, input_item_2, input_item_3, output_item = 'output_item'):
-        self.input_item_1 = input_item_1
-        self.input_item_2 = input_item_2
-        self.input_item_3 = input_item_3
-        self.output_item = output_item
+    def __init__(self, temperature, humidity, hourofday, predictedpower = 'predictedpower'):
+        self.temperature = temperature
+        self.humidity = humidity
+        self.hourofday = hourofday
+        self.predictedpower = predictedpower
         
         super().__init__()
 
@@ -552,7 +552,7 @@ class PredictPower(BaseTransformer):
 
         header = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + mltoken}
 
-        payload_scoring = {"fields": ["AVGTEMP", "AVGHUMIDITY", "HOUROFDAY"], "values": [[df[self.input_item_1],df[self.input_item_2],df[self.input_item_3]]]}
+        payload_scoring = {"fields": ["AVGTEMP", "AVGHUMIDITY", "HOUROFDAY"], "values": [[df[self.temperasture],df[self.humidity],df[self.hourofday]]]}
 
         # response_scoring = requests.post('https://us-south.ml.cloud.ibm.com/v3/wml_instances/c406a8c1-5aae-4934-887a-29871d186f00/deployments/c69641c7-65d1-43d6-a539-0d92147f49a9/online', json=payload_scoring, headers=header)
         # print("Scoring response")
@@ -560,7 +560,7 @@ class PredictPower(BaseTransformer):
         
         #df[self.output_item] = response_scoring.values[0][4];
         
-        df[self.output_item] = df[self.input_item_1] * df[self.input_item_2]
+        df[self.output_item] = df[self.temperature] * df[self.humidity] / 100
         return df 
     
     
