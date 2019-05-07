@@ -13,7 +13,7 @@ from .metadata import Model
 
 logger = logging.getLogger(__name__)
 
-PACKAGE_URL = 'git+https://github.com/ibm-watson-iot/functions.git@'
+PACKAGE_URL = 'git+https://github.com/johnhmacleod/functions.git@'
 
 
 class SimpleAnomaly(BaseRegressor):
