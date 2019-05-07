@@ -563,7 +563,7 @@ class PredictPower(BaseTransformer):
             print(json.loads(response_scoring.text))    
         
             #row[self.output_item] = json.loads(response_scoring.text).values[0][3][3]
-            result = json.loads(response_scoring.text.replace('values','vvalues')
+            result = json.loads(response_scoring.text.replace('values','vvalues'))
             print(result)
             print(result.vvalues)
             print(result.vvalues[0])
