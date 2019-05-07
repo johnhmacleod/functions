@@ -569,8 +569,8 @@ class PredictPower(BaseTransformer):
             print(result)
             print(result.get('fields'))
             print(result.get('vvalues'))
-            print(result.get('vvalues')[0][3][3])
-            row[self.predictedpower] = result.get('vvalues')[0][3][3]
+            print(result.get('vvalues')[0][4])
+            row[self.predictedpower] = result.get('vvalues')[0][4]
             
         for index, row in df.head().iterrows():
             print(row)
