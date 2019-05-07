@@ -552,7 +552,7 @@ class PredictPower(BaseTransformer):
         output = []
         header = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + mltoken}
         
-        for index, row in df.head().iterrows():
+        for index, row in df.iterrows():
 
             #print(row[self.temperature], row[self.humidity], row[self.hourofday])
         
@@ -572,8 +572,8 @@ class PredictPower(BaseTransformer):
             #print(row)
 
         # df[self.predictedpower] = df[self.temperature] * df[self.humidity] / 100
-        df[self.predictedpower] = output
         print(len(output), len(df))
+        df[self.predictedpower] = output
         return df 
     
     @classmethod
