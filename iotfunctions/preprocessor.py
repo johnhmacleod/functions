@@ -528,7 +528,7 @@ class PredictPower(BaseTransformer):
     Predict freezer power usage from ambient temperature, humidity & hour of day
     '''
     
-    def __init__(self, temperature, humidity, hourofday, predictedpower = 'predictedpower'):
+    def __init__(self, temperature, humidity, hourofday, predictedpower = 70):
         self.temperature = temperature
         self.humidity = humidity
         self.hourofday = hourofday
