@@ -553,6 +553,7 @@ class PredictPower(BaseTransformer):
         header = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + mltoken}
         
         for index, row in df.head().iterrows():
+            output = []
             # print(row)
             print(row[self.temperature], row[self.humidity], row[self.hourofday])
         
@@ -566,16 +567,13 @@ class PredictPower(BaseTransformer):
             rs = response_scoring.text.replace('values','vvalues')
             #print(rs)
             result = json.loads(rs)
-            #print(result)
-            #print(result.get('fields'))
-            #print(result.get('vvalues'))
-            #print(result.get('vvalues')[0][4])
-            row[self.predictedpower] = result.get('vvalues')[0][4]
+            output.append(result.get('vvalues')[0][4])
             
-        for index, row in df.head().iterrows():
-            print(row)
+        # for index, row in df.head().iterrows():
+            #print(row)
 
         # df[self.predictedpower] = df[self.temperature] * df[self.humidity] / 100
+        df[self.predictedpower] = output
         return df 
     
     @classmethod
