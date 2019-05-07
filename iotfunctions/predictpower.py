@@ -42,24 +42,24 @@ class PredictPowerSaved(BaseTransformer):
     def build_ui(cls):
         #define arguments that behave as function inputs
         inputs = OrderedDict()
-        inputs['input_item_1'] = UISingleItem(name = 'input_item_1',
+        inputs['temperature'] = UISingleItem(name = 'temperature',
                                               datatype=float,
                                               description = 'Temperature in C',
                                               required = True,
                                               )
-        inputs['input_item_2'] = UISingle(name = 'input_item_2',
+        inputs['humidity'] = UISingle(name = 'humidity',
                                               datatype=float,
                                               description = 'Humidity in %',
                                               required = True,
                                               )
-        inputs['input_item_3'] = UISingle(name = 'input_item_3',
+        inputs['hourofday'] = UISingle(name = 'hourofday',
                                               datatype=float,
                                               description = 'Hour of day',
                                               required = True,
                                               )  
         #define arguments that behave as function outputs
         outputs = OrderedDict()
-        outputs['output_item'] = UIFunctionOutSingle(name = 'output_item',
+        outputs['predictedpower'] = UIFunctionOutSingle(name = 'predictedpower',
                                                      datatype=float,
                                                      description='Predicted power consumption',
                                                      )
