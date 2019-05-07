@@ -21,17 +21,46 @@ class PredictPower(BaseTransformer):
 
         headers = urllib3.util.make_headers(basic_auth='{username}:{password}'.format(username=wml_credentials['username'], password=wml_credentials['password']))
         url = '{}/v3/identity/token'.format(wml_credentials['url'])
-        #response = requests.get(url, headers=headers)
-        #mltoken = json.loads(response.text).get('token')
+        response = requests.get(url, headers=headers)
+        mltoken = json.loads(response.text).get('token')
 
-        #header = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + mltoken}
 
-        #payload_scoring = {"fields": ["AVGTEMP", "AVGHUMIDITY", "HOUROFDAY"], "values": [[df[self.input_item_1],df[self.input_item_2],df[self.input_item_3]]]}
+        header = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + mltoken}
 
-        #response_scoring = requests.post('https://us-south.ml.cloud.ibm.com/v3/wml_instances/c406a8c1-5aae-4934-887a-29871d186f00/deployments/c69641c7-65d1-43d6-a539-0d92147f49a9/online', json=payload_scoring, headers=header)
-        #print("Scoring response")
-        #print(json.loads(response_scoring.text))    
+        payload_scoring = {"fields": ["AVGTEMP", "AVGHUMIDITY", "HOUROFDAY"], "values": [[df[self.input_item_1],df[self.input_item_2],df[self.input_item_3]]]}
+
+        # response_scoring = requests.post('https://us-south.ml.cloud.ibm.com/v3/wml_instances/c406a8c1-5aae-4934-887a-29871d186f00/deployments/c69641c7-65d1-43d6-a539-0d92147f49a9/online', json=payload_scoring, headers=header)
+        # print("Scoring response")
+        # print(json.loads(response_scoring.text))    
         
         #df[self.output_item] = response_scoring.values[0][4];
-        #df[self.output_item] = 70;
-return df 
+        
+        df[self.output_item] = df[self.input_item_1] * df[self.input_item_2]
+        return df 
+    
+    @classmethod
+    def build_ui(cls):
+        #define arguments that behave as function inputs
+        inputs = OrderedDict()
+        inputs['input_item_1'] = UISingleItem(name = 'input_item_1',
+                                              datatype=float,
+                                              description = 'Temperature in C',
+                                              required = True,
+                                              )
+        inputs['input_item_2'] = UISingle(name = 'input_item_2',
+                                              datatype=float,
+                                              description = 'Humidity in %',
+                                              required = True,
+                                              )
+        inputs['input_item_3'] = UISingle(name = 'input_item_3',
+                                              datatype=float,
+                                              description = 'Hour of day',
+                                              required = True,
+                                              )  
+        #define arguments that behave as function outputs
+        outputs = OrderedDict()
+        outputs['output_item'] = UIFunctionOutSingle(name = 'output_item',
+                                                     datatype=float,
+                                                     description='Predicted power consumption',
+                                                     )
+        return (inputs,outputs)
