@@ -554,13 +554,13 @@ class PredictPower(BaseTransformer):
 
         payload_scoring = {"fields": ["AVGTEMP", "AVGHUMIDITY", "HOUROFDAY"], "values": [[df[self.input_item_1],df[self.input_item_2],df[self.input_item_3]]]}
 
-        response_scoring = requests.post('https://us-south.ml.cloud.ibm.com/v3/wml_instances/c406a8c1-5aae-4934-887a-29871d186f00/deployments/c69641c7-65d1-43d6-a539-0d92147f49a9/online', json=payload_scoring, headers=header)
+        # response_scoring = requests.post('https://us-south.ml.cloud.ibm.com/v3/wml_instances/c406a8c1-5aae-4934-887a-29871d186f00/deployments/c69641c7-65d1-43d6-a539-0d92147f49a9/online', json=payload_scoring, headers=header)
         # print("Scoring response")
         # print(json.loads(response_scoring.text))    
         
-        df[self.output_item] = response_scoring.values[0][4];
+        #df[self.output_item] = response_scoring.values[0][4];
         
-        # df[self.output_item] = df[self.input_item_1] * df[self.input_item_2]
+        df[self.output_item] = df[self.input_item_1] * df[self.input_item_2]
         return df 
     
     @classmethod
@@ -586,7 +586,7 @@ class PredictPower(BaseTransformer):
         outputs = OrderedDict()
         outputs['output_item'] = UIFunctionOutSingle(name = 'output_item',
                                                      datatype=float,
-                                                     description='Predicted power consumption'
+                                                     description='Predicted power consumption',
                                                      )
  
     
