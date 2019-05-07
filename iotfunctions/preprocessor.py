@@ -525,7 +525,7 @@ class MultiplyArrayByConstant(BaseTransformer):
 
 class PredictPower(BaseTransformer):
     '''
-    Predict freezer power usage from ambient temperature, humidity & hour of day
+    Predict freezer power usage from ambient temperature, humidity & hour of day V5
     '''
     
     def __init__(self, temperature, humidity, hourofday, predictedpower = 70):
