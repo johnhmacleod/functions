@@ -553,7 +553,8 @@ class PredictPower(BaseTransformer):
         header = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + mltoken}
         
         for row in df.head().itertuples():
-            print(row.Index, row[self.temperature], row[self.humidity], row[self.hourofday])
+            print(row.temp)
+            print(row)
         #payload_scoring = {"fields": ["AVGTEMP", "AVGHUMIDITY", "HOUROFDAY"], "values": [[df[self.temperature],df[self.humidity],df[self.hourofday]]]}
 
         #response_scoring = requests.post('https://us-south.ml.cloud.ibm.com/v3/wml_instances/c406a8c1-5aae-4934-887a-29871d186f00/deployments/c69641c7-65d1-43d6-a539-0d92147f49a9/online', json=payload_scoring, headers=header)
