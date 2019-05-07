@@ -555,7 +555,7 @@ class PredictPower(BaseTransformer):
         for index, row in df.iterrows():
             payload_scoring = {"fields": ["AVGTEMP", "AVGHUMIDITY", "HOUROFDAY"], "values": [[row[self.temperature],row[self.humidity],row[self.hourofday]]]}
             response_scoring = requests.post('https://us-south.ml.cloud.ibm.com/v3/wml_instances/c406a8c1-5aae-4934-887a-29871d186f00/deployments/c69641c7-65d1-43d6-a539-0d92147f49a9/online', json=payload_scoring, headers=header)
-            result = json.loads(rs)
+            result = json.loads(response_soring)
             output.append(result.get('values')[0][4])
             
         df[self.predictedpower] = output
