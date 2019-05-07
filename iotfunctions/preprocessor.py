@@ -551,7 +551,7 @@ class PredictPower(BaseTransformer):
 
 
         header = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + mltoken}
-        print(df[self.temperature])
+        
         for row in df.head().itertuples():
             print(row.Index, row[self.temperature], row[self.humidity], row[self.hourofday])
         #payload_scoring = {"fields": ["AVGTEMP", "AVGHUMIDITY", "HOUROFDAY"], "values": [[df[self.temperature],df[self.humidity],df[self.hourofday]]]}
