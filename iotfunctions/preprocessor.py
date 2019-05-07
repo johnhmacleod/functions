@@ -540,8 +540,8 @@ class PredictPower(BaseTransformer):
         df = df.copy()
         wml_credentials={
             "url": "https://us-south.ml.cloud.ibm.com",
-            "username": "07ccaa7c-a1a3-4323-90d2-d6ea672d2cab",
-            "password": "3e6d9a9a-5a59-4f34-93a2-0cfc9e31eb1e"
+            "username": "8c34c270-1e1c-4052-ae39-6327b0379281",
+            "password": "f18edf22-940a-4907-be66-90446b7e42cc"
         }
 
         headers = urllib3.util.make_headers(basic_auth='{username}:{password}'.format(username=wml_credentials['username'], password=wml_credentials['password']))
