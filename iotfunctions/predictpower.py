@@ -1,4 +1,4 @@
-class PredictPower(BaseTransformer):
+class PredictPowerSaved(BaseTransformer):
     '''
     Predict freezer power usage from ambient temperature, humidity & hour of day
     '''
