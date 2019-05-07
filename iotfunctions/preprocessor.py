@@ -563,34 +563,6 @@ class PredictPower(BaseTransformer):
         df[self.output_item] = df[self.input_item_1] * df[self.input_item_2]
         return df 
     
-    @classmethod
-    def build_ui(cls):
-        #define arguments that behave as function inputs
-        inputs = OrderedDict()
-        inputs['input_item_1'] = UISingleItem(name = 'input_item_1',
-                                              datatype=float,
-                                              description = 'Temperature in C',
-                                              required = True,
-                                              )
-        inputs['input_item_2'] = UISingle(name = 'input_item_2',
-                                              datatype=float,
-                                              description = 'Humidity in %',
-                                              required = True,
-                                              )
-        inputs['input_item_3'] = UISingle(name = 'input_item_3',
-                                              datatype=float,
-                                              description = 'Hour of day',
-                                              required = True,
-                                              )  
-        #define arguments that behave as function outputs
-        outputs = OrderedDict()
-        outputs['output_item'] = UIFunctionOutSingle(name = 'output_item',
-                                                     datatype=float,
-                                                     description='Predicted power consumption',
-                                                     )
- 
-    
-        return (inputs,outputs)    
     
     
 class MultiplyByTwo(BaseTransformer):
