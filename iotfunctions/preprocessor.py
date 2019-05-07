@@ -570,17 +570,17 @@ class PredictPower(BaseTransformer):
         inputs['input_item_1'] = UISingleItem(name = 'input_item_1',
                                               datatype=float,
                                               description = 'Temperature in C',
-                                              required = true,
+                                              required = True,
                                               )
         inputs['input_item_2'] = UISingle(name = 'input_item_2',
                                               datatype=float,
                                               description = 'Humidity in %',
-                                              required = true,
+                                              required = True,
                                               )
         inputs['input_item_3'] = UISingle(name = 'input_item_3',
                                               datatype=float,
                                               description = 'Hour of day',
-                                              required = true,
+                                              required = True,
                                               )  
         #define arguments that behave as function outputs
         outputs = OrderedDict()
