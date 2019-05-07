@@ -560,7 +560,7 @@ class PredictPower(BaseTransformer):
         
         #df[self.output_item] = response_scoring.values[0][4];
         
-        df[self.output_item] = df[self.temperature] * df[self.humidity] / 100
+        df[self.predictedpower] = df[self.temperature] * df[self.humidity] / 100
         return df 
     
     
