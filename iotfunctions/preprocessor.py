@@ -554,7 +554,6 @@ class PredictPower(BaseTransformer):
         
         for index, row in df.head().iterrows():
             output = []
-            # print(row)
             print(row[self.temperature], row[self.humidity], row[self.hourofday])
         
             payload_scoring = {"fields": ["AVGTEMP", "AVGHUMIDITY", "HOUROFDAY"], "values": [[row[self.temperature],row[self.humidity],row[self.hourofday]]]}
@@ -573,7 +572,8 @@ class PredictPower(BaseTransformer):
             #print(row)
 
         # df[self.predictedpower] = df[self.temperature] * df[self.humidity] / 100
-        df[self.predictedpower] = output
+        # df[self.predictedpower] = output
+        print(len(output), len(df))
         return df 
     
     @classmethod
