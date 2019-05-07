@@ -565,7 +565,8 @@ class PredictPower(BaseTransformer):
             #row[self.output_item] = json.loads(response_scoring.text).values[0][3][3]
             result = json.loads(response_scoring.text)
             print(result)
-            print(result.values[0][3][3])
+            print(result.values)
+            print(result.values[0])
         for index, row in df.head().iterrows():
             print(row)
 
